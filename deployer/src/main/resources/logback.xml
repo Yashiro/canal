@@ -2,9 +2,9 @@
 	<jmxConfigurator />
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{56} - %msg%n
-			</pattern>
-		</encoder>
+			<!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{requestURIWithQueryString}] %-5level %logger{56} %L - %msg%n</pattern>-->
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{requestURIWithQueryString}] %-5level [%thread] %caller - %msg%n</pattern>
+        </encoder>
 	</appender>
 	
 	<appender name="CANAL-ROOT" class="ch.qos.logback.classic.sift.SiftingAppender">
@@ -75,9 +75,7 @@
     </logger>
     
 	<root level="WARN">
-		<!--  
 		<appender-ref ref="STDOUT"/>
-		-->
-		<appender-ref ref="CANAL-ROOT" />
+		<!--<appender-ref ref="CANAL-ROOT" />-->
 	</root>
 </configuration>
